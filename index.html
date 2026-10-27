@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chore Split</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <header>
+      <div class="title-block">
+        <p class="kicker">Roommate chores</p>
+        <h1>Chore Split</h1>
+        <p class="lede">Split the housework, then see who has what. Open a day to check chores off, or open a roommate to see their month.</p>
+      </div>
+      <div class="views" role="group" aria-label="Schedule view">
+        <button type="button" data-action="set-view" data-view="day">Day</button>
+        <button type="button" data-action="set-view" data-view="week">Week</button>
+        <button type="button" data-action="set-view" data-view="calendar">Calendar</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="stack">
+        <section class="panel" aria-labelledby="peopleHeading">
+          <h2 id="peopleHeading">Add people</h2>
+          <form id="personForm">
+            <label class="field">
+              Name
+              <span class="inline">
+                <input id="personName" name="name" type="text" maxlength="32" placeholder="Name" autocomplete="off" autocapitalize="words" required />
+                <button class="primary" type="submit">Add</button>
+              </span>
+            </label>
+          </form>
+          <div id="peopleList"></div>
+          <p id="balance" class="balance"></p>
+          <p id="personNote" class="note" role="status"></p>
+        </section>
+
+        <section class="panel" aria-labelledby="taskHeading">
+          <h2 id="taskHeading">Add task</h2>
+          <form id="taskForm">
+            <label class="field">
+              Task
+              <input id="taskTitle" name="title" type="text" maxlength="60" placeholder="Task" autocomplete="off" required />
+            </label>
+            <label class="field">
+              Date
+              <input id="taskDate" name="date" type="date" required />
+            </label>
+            <div class="field">
+              <span id="assignLabel">Assign to</span>
+              <div id="assigneeChoices" role="radiogroup" aria-labelledby="assignLabel"></div>
+            </div>
+            <label class="checkline">
+              <input id="randomize" type="checkbox" />
+              <span>Randomize</span>
+            </label>
+            <p class="hint">Gives the chore to whoever has the lightest load that month.</p>
+            <button class="primary wide" type="submit">Add task</button>
+          </form>
+          <p id="taskNote" class="note" role="status"></p>
+        </section>
+
+        <section class="panel" id="profilePanel">
+          <div id="profile"></div>
+        </section>
+      </aside>
+
+      <div class="board">
+        <section id="schedule" aria-label="Schedule"></section>
+        <section class="panel" id="dayDetail"></section>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
